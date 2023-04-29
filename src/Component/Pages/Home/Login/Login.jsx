@@ -1,11 +1,36 @@
 import React from "react";
+import { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const {signIn} = useContext(UserContext);
+  const location = useLocation();
+  console.log(location);
+  const from = location.state?.from?.pathname || '/'
+  console.log(from);
+  const naveget = useNavigate()
+  const handelLogin = (e)=>{
+    e.preventDefault()
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email,password)
+    signIn(email,password)
+    .then((result) =>{
+      const user = result.user;
+      console.log(user);
+      naveget(from,{replace:true})
+      setLoading(false)
+    })
+    .catch(err=>{
+      console.log(err.message);
+    })
+  }
   return (
     <Container>
-      <Form className="w-25 mx-auto">
+      <Form onSubmit={handelLogin} className="w-25 mx-auto mx">
         <h2>Please Login</h2>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>

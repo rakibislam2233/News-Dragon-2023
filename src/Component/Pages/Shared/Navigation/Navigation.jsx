@@ -5,7 +5,16 @@ import { FaUserCircle } from "react-icons/fa";
 import { UserContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 const Navigation = () => {
-    const {user} = useContext(UserContext)
+    const {users,Logout} = useContext(UserContext)
+    const handelLogout= ()=>{
+      Logout()
+      .then(()=>{
+
+      })
+      .catch((err)=>{
+        console.log(err.message);
+      })
+    }
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
@@ -24,16 +33,16 @@ const Navigation = () => {
           </Nav>
           <Nav>
             <Nav.Link href="#profile">
-              {user ? (
+              {users ? (
                 <>
-                  <h3>{user}</h3>
+                  <img  style={{width:'40px',height:'40px',borderRadius:'50%'}} src={users.photoURL} alt="" />
                 </>
               ) : (
                 <FaUserCircle className="fs-2"></FaUserCircle>
               )}
             </Nav.Link>
-            {user ? (
-              <Button variant="secondary">Sign Out</Button>
+            { users? (
+              <Button onClick={handelLogout} variant="secondary">Sign Out</Button>
             ) : (
               <Link to={"/login"}>
                 <Button variant="primary">Login</Button>

@@ -9,7 +9,6 @@ import { UserContext } from "../../../Provider/AuthProvider/AuthProvider";
 import Navigation from "../Navigation/Navigation";
 const Header = () => {
   const {user} = useContext(UserContext);
-  console.log(user);
   return (
     <Container>
       <div className="text-center py-2">

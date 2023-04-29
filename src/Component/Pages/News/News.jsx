@@ -5,7 +5,6 @@ import Insight from "../Home/Insight/Insight";
 
 const News = () => {
   const news = useLoaderData();
-  console.log(news);
   const {
     _id,
     title,
@@ -16,7 +15,6 @@ const News = () => {
     total_view,
     rating,
   } = news;
-  console.log(category_id);
   return (
     <>
     <Card>

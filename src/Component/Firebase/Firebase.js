@@ -2,15 +2,16 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
+console.log("Hello",import.meta.env.VITE_ID);
+console.log(import.meta.env)
 const firebaseConfig = {
-  apiKey: "AIzaSyDzAezkv_m8QgpvH5H4rLZgKyVM8S1-iNk",
-  authDomain: "the-news-dragon-28fb2.firebaseapp.com",
-  projectId: "the-news-dragon-28fb2",
-  storageBucket: "the-news-dragon-28fb2.appspot.com",
-  messagingSenderId: "610029242611",
-  appId: "1:610029242611:web:d9d46477c70c99735d4f86"
+  apiKey:import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+  appId:import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
